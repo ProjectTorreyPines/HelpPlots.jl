@@ -11,14 +11,31 @@ end
 const _help_plot = Vector{HelpPlotsParameter}()
 
 # Stub definitions to allow extensions to add methods.
+"""
+    help_plot!(args...; kw...)
+
+Throws an error indicating that the in-place plotting helper requires the Plots.jl package to be loaded.
+"""
 function help_plot(args...; kw...)
     return error("Need to load `Plots.jl` package to use `help_plot(args...; kw...)`")
 end
 
+
+"""
+    help_plot!(args...; kw...)
+
+Throws an error indicating that the in-place plotting helper requires the Plots.jl package to be loaded.
+"""
 function help_plot!(args...; kw...)
     return error("Need to load `Plots.jl` package to use `help_plot!(args...; kw...)`")
 end
 
+
+"""
+    assert_type_and_record_argument(name::String, type::Type, description::String; kw...)
+
+Checks that exactly one keyword argument is provided and that its value is a subtype of the specified type.
+"""
 function assert_type_and_record_argument(name::String, type::Type, description::String; kw...)
     @assert length(kw) == 1
     argument = collect(keys(kw))[1]
