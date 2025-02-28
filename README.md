@@ -4,15 +4,36 @@
 
 ## About the Package
 
-HelpPlots.jl provides simple utilities to enhance the `@recipe` functionality in `Plots.jl`. It checks the correctness of keyword arguments and displays helpful information so that users can fine-tune their plots. This functionality was originally developed by **Orso Meneghini** and has been extracted into a lightweight, standalone package.
+`HelpPlots.jl` provides simple utilities to enhance the `@recipe` functionality in `Plots.jl`. It checks the correctness of keyword arguments and displays helpful information so that users can fine-tune their plots. This functionality was originally developed by **Orso Meneghini** and has been extracted into a lightweight, standalone package.
 
 ## Note
 
-This package is designed to be independent and lightweight, without strict dependencies on other packages (e.g., it is independent of the `FUSE.jl` ecosystem). However, to use the `help_plot` and `help_plot!` functionalities provided by HelpPlots.jl, users must also load the `Plots.jl` package.
+This package is designed to be independent and lightweight, without strict dependencies on other packages (e.g., it is independent of the `FUSE.jl` ecosystem). However, to use the `help_plot` and `help_plot!` functionalities provided by `HelpPlots.jl`, users must also load the `Plots.jl` package.
 
 ## Examples
+One can define keyword information inside `@recipe` using `assert_type_and_record_argument` function provided by `HelpPlots.jl` package, like the following example:
+```julia
+using HelpPlots
 
-Assume that you have implemented `assert_type_and_record_argument` in your `@recipe`. The following examples illustrate how `help_plot` works. See `runtests.jl` and `ext/my_recipes.jl` for more details.
+# FYI, this recipe is defined in `SimulationParameters.jl` package
+@recipe function plot_GroupedParameters(GPs::Vector{GroupedParameter}; nrows=:auto, ncols=:auto, each_size=(500, 400))
+
+    name = "Grouped Parameters"
+    assert_type_and_record_argument(name, Tuple{Integer,Integer}, "Size of each subplot. (Default=(500, 400))"; each_size)
+    assert_type_and_record_argument(name, Union{Integer,Symbol}, "Number of rows for subplots' layout (Default = :auto)"; nrows)
+    assert_type_and_record_argument(name, Union{Integer,Symbol}, "Number of columns for subplots' layout (Default = :auto)"; ncols)
+
+    # Main body of recipe
+    ...
+    ...
+    @series begin
+        ...
+        ...
+    end
+end
+```
+
+The following examples illustrate how `help_plot` works. See `test/runtests.jl` and `test/my_recipes.jl` for more details.
 
 ```julia
 # Suppose you have some data and an associated @recipe.
