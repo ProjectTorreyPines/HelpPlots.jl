@@ -12,9 +12,13 @@ const _help_plot = Vector{HelpPlotsParameter}()
 
 # Stub definitions to allow extensions to add methods.
 """
-    help_plot!(args...; kw...)
+    help_plot(args...; kw...)
 
-Throws an error indicating that the in-place plotting helper requires the Plots.jl package to be loaded.
+Prints plotting arguments for objects
+
+Call `help_plot(...)` just like you would call `plot(...)`.
+
+Returns the plot.
 """
 function help_plot(args...; kw...)
     return error("Need to load `Plots.jl` package to use `help_plot(args...; kw...)`")
@@ -24,7 +28,11 @@ end
 """
     help_plot!(args...; kw...)
 
-Throws an error indicating that the in-place plotting helper requires the Plots.jl package to be loaded.
+Prints plotting arguments for objects
+
+Call `help_plot!(...)` just like you would call `plot!(...)`.
+
+Returns the plot.
 """
 function help_plot!(args...; kw...)
     return error("Need to load `Plots.jl` package to use `help_plot!(args...; kw...)`")
@@ -96,5 +104,8 @@ end
 
 export help_plot, help_plot!
 export assert_type_and_record_argument
+
+const document = Dict()
+document[Symbol(@__MODULE__)] = [name for name in Base.names(@__MODULE__; all=false, imported=false) if name != Symbol(@__MODULE__)]
 
 end
