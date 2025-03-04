@@ -20,7 +20,7 @@ Call `help_plot(...)` just like you would call `plot(...)`.
 
 Returns the plot.
 """
-function help_plot(args...; kw...)
+function help_plot()
     return error("Need to load `Plots.jl` package to use `help_plot(args...; kw...)`")
 end
 
@@ -34,7 +34,7 @@ Call `help_plot!(...)` just like you would call `plot!(...)`.
 
 Returns the plot.
 """
-function help_plot!(args...; kw...)
+function help_plot!()
     return error("Need to load `Plots.jl` package to use `help_plot!(args...; kw...)`")
 end
 
