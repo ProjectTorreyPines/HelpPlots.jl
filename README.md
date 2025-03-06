@@ -18,10 +18,10 @@ using HelpPlots
 # FYI, this recipe is defined in `SimulationParameters.jl` package
 @recipe function plot_GroupedParameters(GPs::Vector{GroupedParameter}; nrows=:auto, ncols=:auto, each_size=(500, 400))
 
-    name = "Grouped Parameters"
-    assert_type_and_record_argument(name, Tuple{Integer,Integer}, "Size of each subplot. (Default=(500, 400))"; each_size)
-    assert_type_and_record_argument(name, Union{Integer,Symbol}, "Number of rows for subplots' layout (Default = :auto)"; nrows)
-    assert_type_and_record_argument(name, Union{Integer,Symbol}, "Number of columns for subplots' layout (Default = :auto)"; ncols)
+    id = recipe_dispatch(GPs)
+    assert_type_and_record_argument(id, Tuple{Integer,Integer}, "Size of each subplot. (Default=(500, 400))"; each_size)
+    assert_type_and_record_argument(id, Union{Integer,Symbol}, "Number of rows for subplots' layout (Default = :auto)"; nrows)
+    assert_type_and_record_argument(id, Union{Integer,Symbol}, "Number of columns for subplots' layout (Default = :auto)"; ncols)
 
     # Main body of recipe
     ...
