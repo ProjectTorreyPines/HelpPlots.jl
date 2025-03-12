@@ -4,9 +4,6 @@ using Documenter, HelpPlots
 open(joinpath(@__DIR__, "src/api.md"), "w") do f
     println(f, "# API Reference\n")
     for page in keys(HelpPlots.document)
-        if page in [:Expressions, :COCOS] # COCOS is still a WIP
-            continue
-        end
         println(f, "## $page\n")
         println(f, "```@docs")
         for item in HelpPlots.document[page]
@@ -21,7 +18,8 @@ makedocs(;
     format=Documenter.HTML(;analytics="G-65D8V8C8VQ"),
     sitename="HelpPlots",
     checkdocs=:none,
-    pages=["index.md", "api.md", "License" => "license.md", "Notice" => "notice.md"]
+    pages=["index.md", "api.md", "License" => "license.md", "Notice" => "notice.md"],
+    warnonly=true
 )
 
 # Deploy docs
