@@ -16,3 +16,5 @@ jobs:
       contents: write
       statuses: write
     uses: ProjectTorreyPines/GitHubActionsWorkflows/.github/workflows/make_docs.yml@master
+    with:
+      use_FuseRegistry: false  # HelpPlots and Documenter are both in General
