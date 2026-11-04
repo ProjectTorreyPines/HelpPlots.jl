@@ -1,9 +1,7 @@
-# HelpPlots.jl
-
 [![Build Status](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 [![Docs: stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://projecttorreypines.github.io/HelpPlots.jl/stable/)
 
-## About the Package
+## HelpPlots.jl
 
 `HelpPlots.jl` provides simple utilities to enhance the `@recipe` functionality in `Plots.jl`. It checks the correctness of keyword arguments and displays helpful information so that users can fine-tune their plots. This functionality was originally developed by **Orso Meneghini** and has been extracted into a lightweight, standalone package.
 
