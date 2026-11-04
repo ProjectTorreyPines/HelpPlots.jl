@@ -48,3 +48,19 @@ end
 
     display(p)
 end
+
+@testset "No symlinks in package tree" begin
+    # Pkg verifies the git tree hash of every installed package. Windows users without
+    # symlink rights get symlinks extracted as plain copies, which changes the hash and
+    # triggers a "does not match git-tree-sha1" warning on install (issue #4).
+    root = pkgdir(HelpPlots)
+    symlinks = String[]
+    for (dir, _, files) in walkdir(root)
+        ".git" in splitpath(relpath(dir, root)) && continue
+        for f in files
+            path = joinpath(dir, f)
+            islink(path) && push!(symlinks, relpath(path, root))
+        end
+    end
+    @test symlinks == String[]
+end

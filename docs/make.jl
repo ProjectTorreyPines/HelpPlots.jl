@@ -1,5 +1,12 @@
 using Documenter, HelpPlots
 
+# Copy top-level files into docs/src at build time instead of committing symlinks:
+# symlinks break Pkg's tree-hash check for Windows users without symlink rights (issue #4).
+mkpath(joinpath(@__DIR__, "src"))
+for (src, dst) in ("README.md" => "index.md", "LICENSE" => "license.md", "NOTICE.md" => "notice.md")
+    cp(joinpath(@__DIR__, "..", src), joinpath(@__DIR__, "src", dst); force=true)
+end
+
 # Call functions
 open(joinpath(@__DIR__, "src/api.md"), "w") do f
     println(f, "# API Reference\n")
