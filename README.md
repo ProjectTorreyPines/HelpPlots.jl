@@ -1,8 +1,8 @@
-# HelpPlots.jl
+[![Build Status](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml?query=branch%3Amaster)
+[![Docs: stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://projecttorreypines.github.io/HelpPlots.jl/stable/)
+[![Docs: dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://projecttorreypines.github.io/HelpPlots.jl/dev/)
 
-[![Build Status](https://github.com/mgyoo86/HelpPlots.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/mgyoo86/HelpPlots.jl/actions/workflows/CI.yml?query=branch%3Amain)
-
-## About the Package
+## HelpPlots.jl
 
 `HelpPlots.jl` provides simple utilities to enhance the `@recipe` functionality in `Plots.jl`. It checks the correctness of keyword arguments and displays helpful information so that users can fine-tune their plots. This functionality was originally developed by **Orso Meneghini** and has been extracted into a lightweight, standalone package.
 
@@ -48,11 +48,8 @@ help_plot!(inis2)
 ```
 
 The keyword information is printed like the following.
-<br />
-<div align="center">
-    <img src="assets/example_1.png" width=100%>
-</div>
-<br />
+
+![Keyword information printed by help_plot](assets/example_1.png)
 
 The help_plot function checks the validity of keyword arguments and informs the user if a given keyword is incorrect.
 For example:
@@ -63,8 +60,4 @@ help_plot(inis, each_size=123.456)
 ```
 In such a case, `help_plot` produces an error message to guide the user in fixing the keyword.
 
-<br />
-<div align="center">
-    <img src="assets/example_2.png" width=100%>
-</div>
-<br />
+![Error message for an invalid keyword](assets/example_2.png)

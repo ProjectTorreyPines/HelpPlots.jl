@@ -6,6 +6,8 @@ mkpath(joinpath(@__DIR__, "src"))
 for (src, dst) in ("README.md" => "index.md", "LICENSE" => "license.md", "NOTICE.md" => "notice.md")
     cp(joinpath(@__DIR__, "..", src), joinpath(@__DIR__, "src", dst); force=true)
 end
+# README.md references its images as `assets/...`
+cp(joinpath(@__DIR__, "..", "assets"), joinpath(@__DIR__, "src", "assets"); force=true)
 
 # Call functions
 open(joinpath(@__DIR__, "src/api.md"), "w") do f
@@ -22,7 +24,7 @@ end
 
 makedocs(;
     modules=[HelpPlots],
-    format=Documenter.HTML(;analytics="G-65D8V8C8VQ"),
+    format=Documenter.HTML(;analytics="G-65D8V8C8VQ", edit_link=nothing),
     sitename="HelpPlots",
     checkdocs=:none,
     pages=["index.md", "api.md", "License" => "license.md", "Notice" => "notice.md"],
