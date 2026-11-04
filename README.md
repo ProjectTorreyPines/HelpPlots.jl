@@ -1,5 +1,6 @@
 [![Build Status](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml/badge.svg?branch=master)](https://github.com/ProjectTorreyPines/HelpPlots.jl/actions/workflows/CI.yml?query=branch%3Amaster)
 [![Docs: stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://projecttorreypines.github.io/HelpPlots.jl/stable/)
+[![Docs: dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://projecttorreypines.github.io/HelpPlots.jl/dev/)
 
 ## HelpPlots.jl
 
